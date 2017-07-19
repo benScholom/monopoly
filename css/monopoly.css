@@ -219,6 +219,10 @@ body{
     background-size:contain;
     background-position:center;
 }
+/*create a class for bankrupt players that makes then disappear*/
+.player.removed {
+    display:none;
+}
 
 .board .dice.cell{
     background-color:white;
