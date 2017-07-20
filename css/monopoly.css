@@ -241,3 +241,29 @@ body{
 .dice-dot.right{
     margin-left:36%;
 }
+
+.score {
+    display:none;
+    margin:20px;
+    font-weight:bold;
+}
+
+.score.p1, #player1score {
+    color:#389c36;
+}
+
+.score.p2, #player2score {
+    color:#364c9c;
+}
+
+.score.p3, #player3score {
+    color:#d09461;
+}
+
+.score.p4, #player4score {
+    color:#d061cd;
+}
+.scoreboard {
+    text-align:center;
+    height:100px;
+}

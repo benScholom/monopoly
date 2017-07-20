@@ -5,8 +5,8 @@ Monopoly.doubleCounter = 0;
 
 Monopoly.init = function(){
     $(document).ready(function(){
-        Monopoly.adjustBoardSize();
-        $(window).bind("resize",Monopoly.adjustBoardSize);
+        //Monopoly.adjustBoardSize();
+        //$(window).bind("resize",Monopoly.adjustBoardSize);
         Monopoly.initDice();
         Monopoly.initPopups();
         Monopoly.start();        
@@ -45,6 +45,8 @@ Monopoly.updatePlayersMoney = function(player,amount){
     playersMoney -= amount;
     player.attr("data-money",playersMoney);
     player.attr("title",player.attr("id") + ": $" + playersMoney);
+    var scoreUpdate = $("#"+player.attr("id")+"score");
+    scoreUpdate.html("$" + player.attr("data-money"));
     Monopoly.playSound("chaching");
 };
 
@@ -136,6 +138,7 @@ Monopoly.setNextPlayerTurn = function(){
             var removedId = currentPlayerTurn.attr("id");
             $("#"+removedId).addClass("removed");
             $(".property."+removedId).removeClass(removedId).addClass("available").removeAttr("data-owner").removeAttr("data-rent");
+            $("#"+removedId+"score").html("bankrupt!");
             Monopoly.closeAndNextTurn();
             });
             Monopoly.showPopup("broke");
@@ -372,6 +375,11 @@ Monopoly.createPlayers = function(numOfPlayers){
             player.addClass("current-turn");
         }
         player.attr("data-money",Monopoly.moneyAtStart);
+        //put initial money values in scoreboard
+        var text = $(".score.p"+i);
+        text.css("display", "inline-block");
+        var scoreboard = $("#player"+i+"score");
+        scoreboard.html("$"+Monopoly.moneyAtStart);
     }
 };
 
@@ -418,12 +426,12 @@ Monopoly.showErrorMsg = function(){
 };
 
 
-Monopoly.adjustBoardSize = function(){
+/*Monopoly.adjustBoardSize = function(){
     var gameBoard = $(".board");
     var boardSize = Math.min($(window).height(),$(window).width());
     boardSize -= parseInt(gameBoard.css("margin-top")) *2;
     $(".board").css({"height":boardSize,"width":boardSize});
-}
+}*/
 
 Monopoly.closePopup = function(){
     $(".popup-lightbox").fadeOut();
