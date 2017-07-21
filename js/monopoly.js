@@ -1,6 +1,6 @@
 var Monopoly = {};
 Monopoly.allowRoll = true;
-Monopoly.moneyAtStart = 10;
+Monopoly.moneyAtStart = 250;
 Monopoly.doubleCounter = 0;
 //tracking elmininated players
 Monopoly.elimCounter = 0;
